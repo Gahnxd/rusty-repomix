@@ -1,0 +1,21 @@
+[package]
+name = "rusty_repomix"
+version = "0.1.0"
+edition = "2021"
+description = "High-performance native Rust rewrite of Repomix"
+license = "MIT"
+
+[workspace]
+resolver = "2"
+
+[dependencies]
+anyhow = "1.0"
+colored = "3.0"
+indicatif = "0.18"
+thiserror = "2.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+
+[dev-dependencies]
+assert_cmd = "2.0"
+
