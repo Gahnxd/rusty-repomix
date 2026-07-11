@@ -9,5 +9,7 @@ pub mod core;
 pub mod mcp;
 pub mod shared;
 
+pub use cli::CliArgs;
+pub use config::{load_file_config, merge_configs, FileConfig, RepomixConfig};
 pub use shared::error::{handle_error, RepomixError, Result};
 pub use shared::logger::{init_tracing, set_log_level, LogLevel};

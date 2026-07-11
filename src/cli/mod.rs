@@ -1,3 +1,5 @@
 //! Command-line parsing and command actions.
-//!
-//! CLI argument definitions are added in US-002.
+
+pub mod args;
+
+pub use args::{build_cli_config, CliArgs};

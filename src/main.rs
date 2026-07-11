@@ -1,6 +1,10 @@
 use std::process::ExitCode;
 
-use rusty_repomix::{handle_error, init_tracing};
+use clap::Parser;
+use rusty_repomix::{
+    cli::build_cli_config, config::write_default_config, handle_error, init_tracing,
+    load_file_config, merge_configs, CliArgs, RepomixError,
+};
 
 fn main() -> ExitCode {
     init_tracing();
@@ -17,5 +21,19 @@ fn main() -> ExitCode {
 }
 
 fn run() -> rusty_repomix::Result<()> {
+    let args = CliArgs::parse();
+    let cwd = std::env::current_dir()
+        .map_err(|error| RepomixError::io("determining the current directory", error))?;
+
+    if args.init {
+        write_default_config(&cwd)?;
+        return Ok(());
+    }
+
+    let file_config = load_file_config(&cwd, args.config.as_deref())?;
+    let config = merge_configs(cwd, file_config, build_cli_config(&args));
+    tracing::debug!(?config, "Resolved Repomix configuration");
+
+    // Packing actions are added by subsequent user stories.
     Ok(())
 }
