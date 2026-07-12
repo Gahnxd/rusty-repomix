@@ -10,10 +10,17 @@ resolver = "2"
 
 [dependencies]
 anyhow = "1.0"
+chardetng = "1.0"
 clap = { version = "4.5", features = ["derive"] }
 colored = "3.0"
+content_inspector = "0.2"
+encoding_rs = "0.8"
+globset = "0.4"
+ignore = "0.4"
 indicatif = "0.18"
 json5 = "0.4"
+memmap2 = "0.9"
+rayon = "1.10"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 serde_yaml = "0.9"
