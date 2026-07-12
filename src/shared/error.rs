@@ -40,6 +40,9 @@ pub enum RepomixError {
     #[error("Tokenization error: {0}")]
     Tokenization(String),
 
+    #[error("{0}")]
+    FileSearch(String),
+
     #[error("Operation cancelled")]
     OperationCancelled,
 
